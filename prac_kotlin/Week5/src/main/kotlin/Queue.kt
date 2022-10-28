@@ -6,8 +6,21 @@ interface QueueInterface<T> {
     val isEmpty: Boolean
         get() = count == 0
     fun peek(): T?
-
 }
+fun <T> QueueInterface<T>.reverse(){
+    val aux = Stack<T>()
+    var next = this.dequeue()
+    while (next != null){
+        aux.push(next)
+        next = this.dequeue()
+    }
+    var next2 = aux.pop()
+    while(next2 != null){
+        this.enqueue(next2)
+        next2 = aux.pop()
+    }
+}
+
 
 class ArrayListQueue<T>:QueueInterface<T> {
     private val list = arrayListOf<T>()
@@ -31,6 +44,7 @@ class ArrayListQueue<T>:QueueInterface<T> {
     override fun toString(): String {
         return list.toString()
     }
+
 }
 
 class LinkedListQueue<T>:QueueInterface<T> {
@@ -73,18 +87,6 @@ class RingBufferQueue<T>(size: Int):QueueInterface<T> {
     override fun toString(): String {
         return ringBuffer.toString()
     }
-    fun QueueInterface<T>.reverse(){
-        val aux = Stack<T>()
-        var next = this.dequeue()
-        while (next != null){
-            aux.push(next)
-            next = this.dequeue()
-        }
-        var next2 = aux.pop()
-        while(next2 != null){
-            this.enqueue(next2)
-            next2 = aux.pop()
-        }
-    }
+
 }
 

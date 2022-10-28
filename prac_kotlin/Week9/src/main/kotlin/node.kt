@@ -4,17 +4,17 @@ data class node<T>(
 {
     override fun toString(): String {
         return if (next != null){
-            "$value -> ${next.toString()}"
+            "${value} -> ${next.toString()}"
         } else{
             "$value"
         }
     }
     fun printInReverse() {
-        this.next?.printInReverse()
-        if(this.next != null){
+        this.next?.let{
+            it.printInReverse()
             print(" -> ")
         }
-        print(this.value.toString())
+        print(this.value)
     }
 }
 

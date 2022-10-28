@@ -32,5 +32,8 @@ fun <T: Comparable<T>> ArrayList<T>.findIndices(
 fun main(args: Array<String>) {
     val array = arrayListOf(1,2,3,3,3,4,5,5)
     val indices = array.findIndices(6)
+
+
+
     println(indices)
 }

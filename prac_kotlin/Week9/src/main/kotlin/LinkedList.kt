@@ -153,6 +153,13 @@ class LinkedList<T> : Iterable<T>, Collection<T> {
             this.tail = null
         return head.value
     }
+
+    fun mergesorted(other: LinkedList<T>): LinkedList<T>{
+        var result:LinkedList<T> = LinkedList<T>()
+
+
+        return result
+    }
 }
 
 class LinkedListIterator<K>(

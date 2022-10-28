@@ -54,3 +54,27 @@ class LinkedListQueue<T>:QueueInterface<T> {
         return list.removeHead()
     }
 }
+
+abstract class AbstractPriortyQueue<T>: QueueInterface<T>{
+    abstract val heap: AbstractHeap<T>
+
+    override fun enqueue(element: T): Boolean {
+        heap.insert(element)
+        return true
+    }
+
+    override fun dequeue(): T? {
+        return heap.remove()
+    }
+
+    override val count: Int
+        get() = heap.count
+
+    override fun peek(): T? {
+        return heap.peek()
+    }
+}
+
+class MaxPriorityQueue<T: Comparable<T>>: AbstractPriortyQueue<T>(){
+    override val heap: MaxHeap<T> = MaxHeap<T>()
+}
